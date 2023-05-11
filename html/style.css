@@ -49,7 +49,6 @@
   justify-content: center;
   line-height: 1.25;
   margin: 0 10px;
-  /*min-height: 3rem;*/
   padding: calc(.875rem - 1px) calc(1.5rem - 1px);
   position: relative;
   text-decoration: none;
@@ -92,6 +91,17 @@
 #resetBtn:hover {
     background-color: #89CFF0;
 }
+
+#refreshBtn:hover {
+    background-color: #FFD700;
+}
+
+#refreshBtn{
+    background: url('https://api.iconify.design/mdi/cloud-refresh-outline.svg?width=48') no-repeat center center / contain;    
+    /*background-repeat: no-repeat;*/
+}
+
+
 
 .node.fixed {
     fill: #C0C0C0;
