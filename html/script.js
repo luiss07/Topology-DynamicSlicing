@@ -10,6 +10,7 @@ startButton = () => {
             document.getElementById('startBtn').disabled = true;
             document.getElementById('startBtn').innerHTML = 'Started';
             document.getElementById('stopBtn').disabled = false;
+            document.getElementById('stopBtn').innerHTML = 'Stop';
 
             // Create iframe - Topology Dysplay
             let iframe = document.createElement('iframe');
@@ -45,3 +46,17 @@ stopButton = () => {
     });
 }
 document.getElementById("stopBtn").addEventListener("click", stopButton);
+
+refreshButton = () => {
+    console.log('Refreshing...');
+    refreshBtn = document.getElementById('refreshBtn');
+    refreshBtn.innerHTML = 'Refreshing...';
+    refreshBtn.style = 'background-size: 0 0;'
+    setTimeout(function(){
+        document.getElementById('refreshBtn').innerHTML = '';
+        let iframe = document.getElementsByTagName('iframe')[0];
+        iframe.src = iframe.src;
+        refreshBtn.style = 'background-size: 100% 100%;'
+    }, 2000);
+}
+document.getElementById("refreshBtn").addEventListener("click", refreshButton);
