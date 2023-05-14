@@ -41,7 +41,7 @@ app.get('/api/startNetwork', (req, res) => {
     if (child.pid){
         setTimeout(function(){
             res.json({success: true});
-        }, 6000);
+        }, 4000);
     }else{
         res.json({success: false});
     }
@@ -57,7 +57,7 @@ app.use('/api/stopNetwork', function(req, res) {
             console.log("Child process terminated");
             setTimeout(function(){
                 res.json({success: true});
-            }, 6000);
+            }, 2000);
         }
     });
 });

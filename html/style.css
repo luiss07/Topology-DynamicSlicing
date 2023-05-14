@@ -61,18 +61,18 @@
   width: auto;
 }
 
-.button-6:hover,
+.button-6:hover:not([disabled]),
 .button-6:focus {
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
   color: rgba(0, 0, 0, 0.65);
 }
 
-.button-6:hover {
+.button-6:hover:not([disabled]) {
   transform: translateY(-1px);
 }
 
-.button-6:active {
+.button-6:active:not([disabled]) {
   background-color: #F0F0F1;
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
@@ -80,28 +80,25 @@
   transform: translateY(0);
 }
 
-#startBtn:hover {
+#startBtn:hover:not([disabled]) {
     background-color: #50C878;
 }
 
-#stopBtn:hover {
+#stopBtn:hover:not([disabled]) {
     background-color: #EE4B2B;
 }
 
-#resetBtn:hover {
+#resetBtn:hover:not([disabled]) {
     background-color: #89CFF0;
 }
 
-#refreshBtn:hover {
+#refreshBtn:hover:not([disabled]) {
     background-color: #FFD700;
 }
 
 #refreshBtn{
     background: url('https://api.iconify.design/mdi/cloud-refresh-outline.svg?width=48') no-repeat center center / contain;    
-    /*background-repeat: no-repeat;*/
 }
-
-
 
 .node.fixed {
     fill: #C0C0C0;

@@ -11,6 +11,7 @@ startButton = () => {
             document.getElementById('startBtn').innerHTML = 'Started';
             document.getElementById('stopBtn').disabled = false;
             document.getElementById('stopBtn').innerHTML = 'Stop';
+            document.getElementById('refreshBtn').disabled = false;
 
             // Create iframe - Topology Dysplay
             let iframe = document.createElement('iframe');
@@ -37,7 +38,8 @@ stopButton = () => {
             document.getElementById('stopBtn').innerHTML = 'Stopped';
             document.getElementById('startBtn').disabled = false;
             document.getElementById('startBtn').innerHTML = 'Start';
-
+            document.getElementById('refreshBtn').disabled = true;
+        
             // Remove iframe
             let iframe = document.getElementsByTagName('iframe')[0];
             iframe.parentNode.removeChild(iframe);
@@ -57,6 +59,6 @@ refreshButton = () => {
         let iframe = document.getElementsByTagName('iframe')[0];
         iframe.src = iframe.src;
         refreshBtn.style = 'background-size: 100% 100%;'
-    }, 2000);
+    }, 1000);
 }
 document.getElementById("refreshBtn").addEventListener("click", refreshButton);
