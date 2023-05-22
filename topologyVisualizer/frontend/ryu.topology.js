@@ -97,7 +97,7 @@ function _dragstart(d) {
     var dpid = dpid_to_int(d.dpid)
     d3.json("/stats/flow/" + dpid, function(e, data) {
         flows = data[dpid];
-        console.log(flows);
+        // console.log(flows);
         elem.console.selectAll("ul").remove();
         li = elem.console.append("ul")
             .selectAll("li");
@@ -113,7 +113,7 @@ elem.port = elem.svg.selectAll(".port");
 elem.update = function () {
     
     tmp=topo.nodes.concat(topo.hosts)
-    console.log(topo.nodes)
+    // console.log(topo.nodes)
     
     this.force
         .nodes(tmp)
@@ -172,7 +172,7 @@ var topo = {
         this.add_nodes(data.switches);
         this.add_links(data.links);
         this.add_hosts(data.hosts,this.nodes);
-        console.log(this.hosts)
+        // console.log(this.hosts)
         
     },
     add_nodes: function (nodes) {
@@ -192,7 +192,7 @@ var topo = {
                 dst: target.port
             }
         }
-        console.log(link)
+        // console.log(link)
        
         this.links.push(link);
     },
@@ -212,7 +212,7 @@ var topo = {
        
         for (var i = 0; i < links.length; i++) {
             if (!is_valid_link(links[i])) continue;
-            console.log("add link: " + JSON.stringify(links[i]));
+            // console.log("add link: " + JSON.stringify(links[i]));
 
             var src_dpid = links[i].src.dpid;
             var dst_dpid = links[i].dst.dpid;
@@ -226,13 +226,13 @@ var topo = {
                     dst: links[i].dst
                 }
             }
-            console.log(link)
+            // console.log(link)
             this.links.push(link);
         }
     },
     delete_nodes: function (nodes) {
         for (var i = 0; i < nodes.length; i++) {
-            console.log("delete switch: " + JSON.stringify(nodes[i]));
+            // console.log("delete switch: " + JSON.stringify(nodes[i]));
             hosts=[].concat(this.hosts)
             node_index = this.get_node_index(nodes[i]);
             for(t=0;t<hosts.length;t++){
@@ -264,8 +264,8 @@ var topo = {
     delete_links: function (links) {
         for (var i = 0; i < links.length; i++) {
             if (!is_valid_link(links[i])) continue;
-            console.log(links[i])
-            console.log("delete link: " + JSON.stringify(links[i]));
+            // console.log(links[i])
+            // console.log("delete link: " + JSON.stringify(links[i]));
 
             link_index = this.get_link_index(links[i]);
             this.links.splice(link_index, 1);
@@ -364,9 +364,9 @@ var topo = {
     },
     getSwitchPort: function(sw,port){
         for(i=0;i<sw.ports.length;i++){
-            console.log("giro")
-            console.log(sw.ports[i])
-            console.log(port)
+            // console.log("giro")
+            // console.log(sw.ports[i])
+            // console.log(port)
             if(sw.ports[i].name==port.name){
                 return sw.ports[i]
             }

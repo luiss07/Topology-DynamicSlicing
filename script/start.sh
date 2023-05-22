@@ -2,7 +2,10 @@
 
 # run ryu controller
 cd ~/comnetsemu/Topology-DynamicSlicing/topologyVisualizer
-ryu-manager --observe-links gui_start.py simple_switch.py
+ryu-manager --observe-links gui_start.py controller.py &
 sleep 1
 #run mininet
-#sudo python3 ~/comnetsemu/Topology-DynamicSlicing//topology.py
+#sudo python3 topology.py 
+#sleep 1
+#echo "Run default scenario"
+#./defaultScenario.sh

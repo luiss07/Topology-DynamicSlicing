@@ -9,6 +9,7 @@ const PORT = 8081; // Use port 8081 because port 8080 is used by mininet
 var PID = 0; // PID of child process
 
 const startPath = '/home/vagrant/comnetsemu/Topology-DynamicSlicing/script/start.sh'
+const defaultScenario = '/home/vagrant/comnetsemu/Topology-DynamicSlicing/script/defaultScenario.sh'
 
 app.use(express.static(__dirname + '/html'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -17,28 +18,51 @@ app.use(bodyParser.json());
 app.get('/api/startNetwork', (req, res) => {
 
     console.log('Called API start network');
-    //Spawn child process
-    const child = spawn('bash', [startPath]);
 
-    PID = child.pid; //Retreive child process PID
+    const childProcess = exec(`sh ${startPath}`);
 
-    process.stdin.pipe(child.stdin); // Pipe parent process stdin to child process stdin
+    // Get the PID of the child process
+    PID = childProcess.pid;
 
-    //When child process writes to stdout
-    child.stdout.on('data', (data) => { 
-        console.log(`stdout: ${data}`);
+    const childTopology = exec(`sudo python3 ./topologyVisualizer/topology.py`, (err, stdout, stderr) => {
+        if (err) {
+            res.json({success: false});
+        }
     });
 
-    //When child process writes to stderr
-    child.stderr.on('data', (data) => {
-        console.log(`stderr: ${data}`);
+    setTimeout(function(){
+        const childDefScenario = exec('sh ' + defaultScenario, (err, stdout, stderr) => {
+            if (err) {
+                console.log(`Default scenario error: ${err.message}`);
+            }else{
+                console.log("Default scenario executed:\n" + stdout);
+                process.stdout.write("mininet> ");
+            }
+        });
+    }, 3000);
+
+    // Redirect stdout and stderr of the child process to the terminal
+
+    childTopology.stdout.pipe(process.stdout);
+    childTopology.stderr.pipe(process.stderr);
+    process.stdin.pipe(childTopology.stdin);
+
+    childTopology.on('error', (error) => {
+    console.error(`Error executing the script: ${error}`);
+    });
+
+    childTopology.on('close', (code) => {
+    console.log(`Script execution finished with code ${code}`);
     });
 
     //When child process terminates
-    child.on('exit', function(code, signal) {
+    childTopology.on('exit', function(code, signal) {
         console.log('Child terminated with code: ' + code);
     });
-    if (child.pid){
+
+
+
+    if (childProcess.pid){
         setTimeout(function(){
             res.json({success: true});
         }, 4000);
@@ -60,6 +84,14 @@ app.use('/api/stopNetwork', function(req, res) {
             }, 2000);
         }
     });
+});
+
+app.use('/api/slice2', function(req, res) {
+
+});
+
+app.use('/api/slice3', function(req, res) {
+
 });
 
 app.listen(PORT, function() {

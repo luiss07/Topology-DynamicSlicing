@@ -4,19 +4,34 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="./style.css">
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 </head>
 
 <body>
-    <h1 id="header1">On demand slicing topology</h1>
+    <h1 id="h1">On demand slicing topology</h1>
 
     <div id="buttons">
         <button class="button-6" id="startBtn" role="button">Start</button>
         <button class="button-6" id="stopBtn" role="button" disabled="true">Stopped</button>
-        <button class="button-6" id="resetBtn" role="button" disabled="true">Reset</button>
+        <!-- <button class="button-6" id="resetBtn" role="button" disabled="true">Reset</button> -->
         <button class="button-6" id="refreshBtn" role="button" title="Refresh topology" disabled="true"></button>
     </div>
-    
+
+    <div id="sliderContainer">
+        <div class="sliderBox" id="slider1">
+            <label class="switch">
+                <input type="checkbox" id="test">
+                <span class="slider round"></span>
+            </label>
+            <h3 id="h3">Slice 2</h3>
+        </div>
+        <div class="sliderBox" id="slider2">
+            <label class="switch">
+                <input type="checkbox" id="test">
+                <span class="slider round"></span>
+            </label>
+            <h3 id="h3">Slice 3</h3>
+        </div>
+    </div>
     <div id="displayContainer"></div>
 
     <script src="./script.js"></script>
