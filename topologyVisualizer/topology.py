@@ -30,11 +30,11 @@ class TopologyContainer(Topo):
         # add links between hosts and switches
         self.addLink('h1', 's1', **link_config)
         self.addLink('h4', 's1', **link_config)
-        self.addLink('h5', 's1', **link_config)
         self.addLink('h6', 's1', **link_config)
         self.addLink('h7', 's2', **link_config)
         self.addLink('h2', 's3', **link_config)
         self.addLink('h3', 's3', **link_config)
+        self.addLink('h5', 's3', **link_config)
 
 if __name__ == '__main__':
     topo = TopologyContainer() # build the topology  

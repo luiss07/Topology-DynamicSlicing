@@ -18,8 +18,8 @@ class TrafficSlicing(app_manager.RyuApp):
             1: {
                 "00:00:00:00:00:01": 3, # host 1 port 3
                 "00:00:00:00:00:04": 4, # host 4 port 4
-                "00:00:00:00:00:05": 5, # host 5 port 5
-                "00:00:00:00:00:06": 6, # host 6 port 6
+                "00:00:00:00:00:05": 2, # host 5 port 5
+                "00:00:00:00:00:06": 5, # host 6 port 6
                 "00:00:00:00:00:02": 2, # host 2 port 3
                 "00:00:00:00:00:03": 2, # host 3 port 3
                 "00:00:00:00:00:07": 1, # host 7 port 2
@@ -32,6 +32,8 @@ class TrafficSlicing(app_manager.RyuApp):
                 "00:00:00:00:00:01": 1, # host 1 port 1
                 "00:00:00:00:00:02": 2, # host 2 port 2
                 "00:00:00:00:00:03": 3, # host 3 port 3
+                "00:00:00:00:00:04": 1, # host 4 port 1
+                "00:00:00:00:00:05": 4, # host 5 port 4
             },
         }
 
