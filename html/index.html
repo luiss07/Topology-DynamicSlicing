@@ -12,26 +12,33 @@
     <div id="buttons">
         <button class="button-6" id="startBtn" role="button">Start</button>
         <button class="button-6" id="stopBtn" role="button" disabled="true">Stopped</button>
-        <!-- <button class="button-6" id="resetBtn" role="button" disabled="true">Reset</button> -->
         <button class="button-6" id="refreshBtn" role="button" title="Refresh topology" disabled="true"></button>
     </div>
 
-    <div id="sliderContainer">
-        <div class="sliderBox" id="slider1">
-            <label class="switch">
-                <input type="checkbox" id="test">
-                <span class="slider round"></span>
-            </label>
-            <h3 id="h3">Slice 2</h3>
+    <div id="gridContainer">
+        <div class="column" id="slice1">
+            <div class="gridHeaderBox">
+                <h3 class="gridHeader3">Slice 1</h3>
+                <p id="slice1Par"> DISABLED </p>
+            </div>
+          <p id="slice1Info"></p>
         </div>
-        <div class="sliderBox" id="slider2">
-            <label class="switch">
-                <input type="checkbox" id="test">
-                <span class="slider round"></span>
-            </label>
-            <h3 id="h3">Slice 3</h3>
-        </div>
-    </div>
+        <div class="column" id="slice2">
+            <div class="gridHeaderBox">
+                <h3 class="gridHeader3">Slice 2</h3>
+                <button class="gridBtn" id="slice2Btn" role="button" disabled="false">ACTIVATE</button>
+            </div>
+          <p id="slice2Info"></p>
+        </div>  
+        <div class="column" id="slice3">
+            <div class="gridHeaderBox">
+                <h3 class="gridHeader3">Slice 3</h3>
+                <button class="gridBtn" id="slice3Btn" role="button" disabled="false">ACTIVATE</button>
+            </div>
+            <p id="slice3Info"></p>
+          </div>  
+      </div>
+
     <div id="displayContainer"></div>
 
     <script src="./script.js"></script>
