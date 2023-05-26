@@ -2,37 +2,37 @@
 
 #reset previous configuration, this is done to avoid errors
 bash ./script/resetScenario.sh
-# S1
+# S1    
 echo ' ---------------------------------------------- '
-echo '*** Network Slicing: Creating 2 slice of 7 and 3 Mbps ...'
+echo '*** Network Slicing: Creating 2 slice of 6 and 4 Mbps ...'
 echo 'Switch 1:'
 sudo ovs-vsctl -- \
 set port s1-eth1 qos=@newqos -- \
 set port s1-eth2 qos=@newqos -- \
 --id=@newqos create QoS type=linux-htb \
-other-config:max-rate=10000 \
+other-config:max-rate=10000000 \
 queues:123=@1q \
 queues:243=@2q -- \
---id=@1q create queue other-config:min-rate=1000 other-config:max-rate=6000 -- \
---id=@2q create queue other-config:min-rate=1000 other-config:max-rate=4000 -- \
+--id=@1q create queue other-config:min-rate=1000000 other-config:max-rate=6000000 -- \
+--id=@2q create queue other-config:min-rate=1000000 other-config:max-rate=4000000
 
-# S3
+# S2
 echo 'Switch 2:'
 sudo ovs-vsctl -- \
 set port s2-eth1 qos=@newqos -- \
 --id=@newqos create QoS type=linux-htb \
-other-config:max-rate=10000 \
+other-config:max-rate=10000000 \
 
 # S3
 echo 'Switch 3:'
 sudo ovs-vsctl -- \
 set port s3-eth1 qos=@newqos -- \
 --id=@newqos create QoS type=linux-htb \
-other-config:max-rate=10000 \
+other-config:max-rate=10000000 \
 queues:123=@1q \
 queues:234=@2q -- \
---id=@1q create queue other-config:min-rate=1000 other-config:max-rate=6000 -- \
---id=@2q create queue other-config:min-rate=1000 other-config:max-rate=4000 -- \
+--id=@1q create queue other-config:min-rate=1000000 other-config:max-rate=6000000 -- \
+--id=@2q create queue other-config:min-rate=1000000 other-config:max-rate=4000000
 
 
 echo '*** Slices Created!'
