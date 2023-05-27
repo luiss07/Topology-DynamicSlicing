@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #reset previous configuration, this is done to avoid errors
-#bash ./script/resetScenario.sh
+
 # S1
 echo ' ---------------------------------------------- '
 echo '*** Network Slicing: Creating 1 slice of 10 Mbps ...'
@@ -26,11 +26,10 @@ echo 'Switch 3:'
 sudo ovs-vsctl -- \
 set port s3-eth1 qos=@newqos -- \
 --id=@newqos create QoS type=linux-htb \
-other-config:max-rate=20000000 \
+other-config:max-rate=10000000 \
 queues:123=@1q \
 queues:234=@2q -- \
 --id=@1q create queue other-config:min-rate=1000000 other-config:max-rate=10000000 -- \
---id=@2q create queue other-config:min-rate=1000000 other-config:max-rate=10000000 -- \
 
 echo '*** Slices Created!'
 echo ' ---------------------------------------------- '
