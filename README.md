@@ -17,12 +17,11 @@ Basically, it consists of a web application that displays the topology created u
 - [How to run the project](#how-to-run-the-project)
 - [Topology and slicing](#topology-and-slicing)
   - [Default scenario](#default-scenario)
-  - [Upper critical scenario](#upper-critical-scenario)
-  - [Lower critical scenario](#lower-critical-scenario)
-  - [Both critical scenario](#both-critical-scenario)
+  - [Slice 2 scenario](#slice-2-scenario)
+  - [Slice 3 scenario](#slice-3-scenario)
+  - [Both scenario](#both-scenario)
 - [Useful Mininet commands](#useful-mininet-commands)
 - [Documentation](#documentation)
-- [Contributors](#contributors)
 
 ## Requirements
 
@@ -264,7 +263,7 @@ If we check the connection among the hosts we get:
 
 <img src="images/slice3Scenario/slice3-iperf-h6-h7.png" width="45%" height="45%"></img>
 
-### Both Critical Scenario
+### Both Scenario
 
 <img src="images/slice2+3Scenario/topologyBoth.png" width=90% height=90%></img>
 
