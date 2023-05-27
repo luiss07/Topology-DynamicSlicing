@@ -36,42 +36,7 @@ Basically, it consists of a web application that displays the topology created u
 
 ## Project Structure
 
-Here is represented the project tree expanding only the relevant files.
-
-```
-.
-├── app.js
-├── html
-│   ├── index.html
-│   ├── script.js
-│   └── style.css
-├── images
-│   ├── ...
-├── launch.sh
-├── node_modules
-│   ├── ...
-├── package.json
-├── README.md
-├── script
-│   ├── defaultScenario.sh
-│   ├── resetScenario.sh
-│   ├── slice2+3Scenario.sh
-│   ├── slice2Scenario.sh
-│   ├── slice3Scenario.sh
-│   └── start.sh
-└── topologyVisualizer
-    ├── controller.py
-    ├── frontend
-    │   ├── host.svg
-    │   ├── index.html
-    │   ├── router.svg
-    │   ├── ryu.topology.js
-    │   └── style.css
-    ├── gui_start.py
-    ├── __pycache__
-    └── topology.py
-
-```
+Here is represented the project tree expanding only the relevant files:
 
 ```bash
 📦Topology-DynamicSlicing
