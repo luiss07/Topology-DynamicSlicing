@@ -13,7 +13,7 @@ Basically, it consists of a web application that displays the topology created u
 - [Requirements](#requirements)
 - [Project Structure](#project-structure)
 - [Installation Procedure](#installation-procedure)
-- [Access web application outside vagrant](#Access-web-application-outside-vagrant)
+- [Access web application outside vagrant](#access-web-application-outside-vagrant)
 - [How to run the project](#how-to-run-the-project)
 - [Topology and slicing](#topology-and-slicing)
   - [Default scenario](#default-scenario)
@@ -157,8 +157,6 @@ In the terminal where you ran the bash script you are given the mininet's CLI. I
 ## Topology and Slicing
 
 We decided to keep this topology for the project:
-
-Immagine Topologia
 
 ### Default Scenario
 
