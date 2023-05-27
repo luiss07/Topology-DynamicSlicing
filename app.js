@@ -13,6 +13,8 @@ const startPath = '/home/vagrant/comnetsemu/Topology-DynamicSlicing/script/start
 const resetScenario = '/home/vagrant/comnetsemu/Topology-DynamicSlicing/script/resetScenario.sh'
 const defaultScenario = '/home/vagrant/comnetsemu/Topology-DynamicSlicing/script/defaultScenario.sh'
 const slice2Scenario = '/home/vagrant/comnetsemu/Topology-DynamicSlicing/script/slice2Scenario.sh'
+const slice3Scenario = '/home/vagrant/comnetsemu/Topology-DynamicSlicing/script/slice3Scenario.sh'
+const sliceBothScenario = '/home/vagrant/comnetsemu/Topology-DynamicSlicing/script/slice2+3Scenario.sh'
 
 app.use(express.static(__dirname + '/html'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -104,10 +106,6 @@ app.use('/api/stopNetwork', function(req, res) {
 
     console.log('Called API stop network');
 
-    topologyProcess.stdout.pipe(process.stdout).unpipe;
-    topologyProcess.stderr.pipe(process.stderr).unpipe;
-    process.stdin.pipe(topologyProcess.stdin).unpipe;
-
     // Kill the topology process
     exec(`kill ${topologyProcess.pid}`, (error, stdout, stderr) => {
         if (error) {
@@ -139,22 +137,24 @@ app.use('/api/resetScenario', function(req, res) {
 
     exec('sh' + resetScenario);
 
-    const childDefScenario = exec('sh ' + defaultScenario, (err, stdout, stderr) => {
-        if (err) {
-            console.log(`Default scenario error: ${err.message}`);
-            res.json({success: false});
-        }else{
-            console.log("Default scenario executed:\n" + stdout);
-            res.json({success: true});
-        }
-    });
+    setTimeout(function(){
+        const childDefScenario = exec('sh ' + defaultScenario, (err, stdout, stderr) => {
+            if (err) {
+                console.log(`Default scenario error: ${err.message}`);
+                res.json({success: false});
+            }else{
+                console.log("Default scenario executed:\n" + stdout);
+                res.json({success: true});
+            }
+        });
+    }, 2000);
 });
 
 app.use('/api/activateSlice2', function(req, res) {
     console.log('Called API activate slice 2');
 
     setTimeout(function(){
-        const childSlice2 = exec('sh ' + slice2Scenario, (err, stdout, stderr) => {
+        exec('sh ' + slice2Scenario, (err, stdout, stderr) => {
             if (err) {
                 console.log(`Slice 2 scenario error: ${err.message}`);
                 res.json({success: false});
@@ -167,7 +167,35 @@ app.use('/api/activateSlice2', function(req, res) {
 });
 
 app.use('/api/activateSlice3', function(req, res) {
+    console.log('Called API activate slice 3');
 
+    setTimeout(function(){
+        exec('sh ' + slice3Scenario, (err, stdout, stderr) => {
+            if (err) {
+                console.log(`Slice 3 scenario error: ${err.message}`);
+                res.json({success: false});
+            }else{
+                console.log('Slice 3 scenario executed:\n' + stdout);
+                res.json({success: true});
+            }
+        });
+    }, 2000);
+});
+
+app.use('/api/activateBoth', function(req, res) {
+    console.log('Called API activate slice 2+3');
+
+    setTimeout(function(){
+        exec('sh ' + sliceBothScenario, (err, stdout, stderr) => {
+            if (err) {
+                console.log(`Slice 2+3 scenario error: ${err.message}`);
+                res.json({success: false});
+            }else{
+                console.log('Slice 2+3 scenario executed:\n' + stdout);
+                res.json({success: true});
+            }
+        });
+    }, 2000);
 });
 
 app.listen(PORT, function() {
